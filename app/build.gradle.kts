@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -49,7 +50,19 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation("androidx.compose.material:material:1.6.1")
+    implementation(libs.androidx.material)
+
+    //nav
+    implementation(libs.androidx.navigation.compose)
+
+    // Room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler.v250)
+
+    //koin
+    implementation(libs.koin.android) // Use the latest stable version
+    implementation(libs.koin.androidx.compose) // Koin for Compose
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
